@@ -107,8 +107,7 @@ document.querySelectorAll('section').forEach(section => {
     observer.observe(section);
 });
 
-// Carrusel y modal de galería
-// Lista de imágenes de la galería
+// --- Carrusel y modal de galería: lógica revisada para overlay global y centrado real ---
 const galleryImages = [
   "imagenes/idilio cafe y tostadas.jpg",
   "imagenes/idilio cafe y tostadas2.jpg",
@@ -122,8 +121,8 @@ const galleryImages = [
   "imagenes/idilio.jpg"
 ];
 
-// Elementos del modal
 const modalBg = document.getElementById('gallery-modal-bg');
+const modalContent = document.getElementById('gallery-modal-content');
 const modalImg = document.getElementById('gallery-modal-img');
 const modalClose = document.getElementById('gallery-modal-close');
 const modalPrev = document.getElementById('gallery-modal-prev');
@@ -135,14 +134,52 @@ function openGalleryModal(index) {
   if (!modalBg || !modalImg) return;
   currentImgIndex = index;
   modalImg.src = galleryImages[currentImgIndex];
+  // Mueve el overlay al final del body para asegurar overlay global
+  document.body.appendChild(modalBg);
   modalBg.classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
+  document.body.classList.add('modal-open');
+  // Overlay global
+  modalBg.style.position = 'fixed';
+  modalBg.style.top = '0';
+  modalBg.style.left = '0';
+  modalBg.style.width = '100vw';
+  modalBg.style.height = '100vh';
+  modalBg.style.background = 'rgba(0,0,0,0.92)';
+  modalBg.style.zIndex = '9999';
+  // Centrado absoluto de la imagen
+  if (modalImg) {
+    modalImg.style.position = 'fixed';
+    modalImg.style.top = '50%';
+    modalImg.style.left = '50%';
+    modalImg.style.transform = 'translate(-50%, -50%)';
+    modalImg.style.maxWidth = '96vw';
+    modalImg.style.maxHeight = '92vh';
+    modalImg.style.objectFit = 'contain';
+    modalImg.style.margin = '0';
+    modalImg.style.display = 'block';
+    modalImg.style.background = '#fff';
+    modalImg.style.borderRadius = '1rem';
+    modalImg.style.boxShadow = '0 4px 32px rgba(0,0,0,0.4)';
+    modalImg.style.zIndex = '10000';
+  }
+  // Asegura que los controles también estén sobre el overlay
+  [modalClose, modalPrev, modalNext].forEach(btn => {
+    if (btn) btn.style.zIndex = '10001';
+  });
 }
 
 function closeGalleryModal() {
   if (!modalBg) return;
   modalBg.classList.add('hidden');
-  document.body.style.overflow = '';
+  document.body.classList.remove('modal-open');
+  // Limpia estilos inline
+  modalBg.style = '';
+  if (modalImg) {
+    modalImg.style = '';
+  }
+  [modalClose, modalPrev, modalNext].forEach(btn => {
+    if (btn) btn.style = '';
+  });
 }
 
 function prevGalleryImg() {
@@ -157,28 +194,68 @@ function nextGalleryImg() {
   modalImg.src = galleryImages[currentImgIndex];
 }
 
-// Asigna eventos a las imágenes de la galería
 const galleryItems = document.querySelectorAll('.gallery-img');
 galleryItems.forEach((item, idx) => {
   item.addEventListener('click', () => openGalleryModal(idx));
 });
 
-// Eventos de los botones del modal
 if (modalClose) modalClose.addEventListener('click', closeGalleryModal);
 if (modalPrev) modalPrev.addEventListener('click', prevGalleryImg);
 if (modalNext) modalNext.addEventListener('click', nextGalleryImg);
 
-// Cierra el modal al hacer click fuera de la imagen
 if (modalBg) {
   modalBg.addEventListener('click', (e) => {
     if (e.target === modalBg) closeGalleryModal();
   });
 }
 
-// Navegación con teclado
 window.addEventListener('keydown', (e) => {
   if (!modalBg || modalBg.classList.contains('hidden')) return;
   if (e.key === 'Escape') closeGalleryModal();
   if (e.key === 'ArrowLeft') prevGalleryImg();
   if (e.key === 'ArrowRight') nextGalleryImg();
 });
+
+// --- Mostrar imagen de menú completo en el modal ---
+const openMenuImageBtn = document.getElementById('open-menu-image');
+if (openMenuImageBtn && modalBg && modalImg) {
+  openMenuImageBtn.addEventListener('click', function () {
+    modalImg.src = 'imagenes/idilio menu.jpg';
+    document.body.appendChild(modalBg);
+    modalBg.classList.remove('hidden');
+    document.body.classList.add('modal-open');
+    modalBg.style.position = 'fixed';
+    modalBg.style.top = '0';
+    modalBg.style.left = '0';
+    modalBg.style.width = '100vw';
+    modalBg.style.height = '100vh';
+    modalBg.style.background = 'rgba(0,0,0,0.92)';
+    modalBg.style.zIndex = '9999';
+    if (modalImg) {
+      modalImg.style.position = 'fixed';
+      modalImg.style.top = '50%';
+      modalImg.style.left = '50%';
+      modalImg.style.transform = 'translate(-50%, -50%)';
+      modalImg.style.maxWidth = '96vw';
+      modalImg.style.maxHeight = '92vh';
+      modalImg.style.objectFit = 'contain';
+      modalImg.style.margin = '0';
+      modalImg.style.display = 'block';
+      modalImg.style.background = '#fff';
+      modalImg.style.borderRadius = '1rem';
+      modalImg.style.boxShadow = '0 4px 32px rgba(0,0,0,0.4)';
+      modalImg.style.zIndex = '10000';
+    }
+    if (modalPrev) modalPrev.style.display = 'none';
+    if (modalNext) modalNext.style.display = 'none';
+    [modalClose, modalPrev, modalNext].forEach(btn => {
+      if (btn) btn.style.zIndex = '10001';
+    });
+  });
+  if (modalClose) {
+    modalClose.addEventListener('click', function () {
+      if (modalPrev) modalPrev.style.display = '';
+      if (modalNext) modalNext.style.display = '';
+    });
+  }
+}

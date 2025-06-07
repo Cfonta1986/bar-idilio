@@ -295,11 +295,10 @@
                 </div>
 
                 <div class="text-center mt-12">
-                    <a href="https://maps.app.goo.gl/pC2PpFPStYCMjwT3A" target="_blank" 
-                       class="inline-block bg-coffee-brown text-white px-8 py-3 rounded-lg font-semibold hover:bg-coffee-dark transition-colors duration-300">
+                    <button id="open-menu-image" type="button" class="inline-block bg-coffee-brown text-white px-8 py-3 rounded-lg font-semibold hover:bg-coffee-dark transition-colors duration-300">
                         <i class="fas fa-external-link-alt mr-2"></i>
                         Ver Menú Completo
-                    </a>
+                    </button>
                 </div>
             </div>
         </section>
@@ -348,10 +347,12 @@
                 </div>
                 <!-- Modal para galería -->
                 <div id="gallery-modal-bg" class="hidden">
-                    <button id="gallery-modal-close" aria-label="Cerrar"><i class="fas fa-times"></i></button>
-                    <button id="gallery-modal-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
-                    <img id="gallery-modal-img" src="" alt="Imagen ampliada">
-                    <button id="gallery-modal-next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+                    <div id="gallery-modal-content">
+                        <button id="gallery-modal-close" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+                        <button id="gallery-modal-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                        <img id="gallery-modal-img" src="" alt="" />
+                        <button id="gallery-modal-next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -493,7 +494,7 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Contacto</h4>
                     <div class="space-y-2 text-gray-300">
-                        <p><i class="fas fa-map-marker-alt mr-2"></i>Idilio, Rioja 2051, Rosario, Santa Fe</p>
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>Idilio, Jujuy 2097, Rosario.
                         <p><i class="fas fa-envelope mr-2"></i>info@baridilio.com</p>
                         <div class="flex space-x-3 mt-4">
                             <a href="#" class="w-8 h-8 bg-coffee-brown rounded-full flex items-center justify-center hover:bg-coffee-gold transition-colors">
@@ -511,7 +512,8 @@
             </div>
             
             <div class="border-t border-coffee-brown mt-8 pt-8 text-center text-gray-300">
-                <p>&copy; 2024 Bar Idilio. Todos los derechos reservados. | Idilio, Rioja 2051, Rosario, Santa Fe, Argentina</p>
+                <p>
+Desarrollado por <a href="https://cristian-fontanini.vercel.app/" target="_blank" rel="noopener" class="text-coffee-gold hover:underline">Cristian Fontanini</a></p>
             </div>
         </div>
     </footer>
