@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Idilio - El mejor café de Rosario</title>
+    <meta name="description" content="Bar Idilio, la mejor cafetería de Rosario desde 2015. Descubre nuestro delicioso café, tostadas y ambiente acogedor en el corazón de la ciudad.">
+    <meta name="keywords" content="café Rosario, cafetería, tostadas, desayuno, merienda, Bar Idilio">
+    <meta name="author" content="Bar Idilio">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Bar Idilio - El mejor café de Rosario">
+    <meta property="og:description" content="Disfruta del mejor café de Rosario en Bar Idilio. Ambiente acogedor y productos de calidad desde 2015.">
+    <meta property="og:type" content="website">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'coffee-brown': '#8B4513',
+                        'coffee-light': '#D2691E',
+                        'coffee-cream': '#F5E6D3',
+                        'coffee-gold': '#DAA520',
+                        'coffee-dark': '#654321'
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-coffee-cream">
+    <!-- Header -->
+    <header class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-coffee-brown rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-coffee text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-serif font-bold text-coffee-dark">Bar Idilio</h1>
+                        <p class="text-sm text-coffee-light">El mejor café de Rosario</p>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8" aria-label="Navegación principal">
+                    <a href="#inicio" class="text-coffee-dark hover:text-coffee-light transition-colors duration-300 font-medium">Inicio</a>
+                    <a href="#nosotros" class="text-coffee-dark hover:text-coffee-light transition-colors duration-300 font-medium">Nosotros</a>
+                    <a href="#menu" class="text-coffee-dark hover:text-coffee-light transition-colors duration-300 font-medium">Menú</a>
+                    <a href="#galeria" class="text-coffee-dark hover:text-coffee-light transition-colors duration-300 font-medium">Galería</a>
+                    <a href="#contacto" class="text-coffee-dark hover:text-coffee-light transition-colors duration-300 font-medium">Contacto</a>
+                </nav>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-button" class="md:hidden text-coffee-dark">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav id="mobile-menu" class="mobile-menu md:hidden bg-white shadow-lg absolute top-full left-0 w-full" aria-label="Navegación móvil">
+            <div class="px-4 py-2 space-y-2">
+                <a href="#inicio" class="block py-2 text-coffee-dark hover:text-coffee-light">Inicio</a>
+                <a href="#nosotros" class="block py-2 text-coffee-dark hover:text-coffee-light">Nosotros</a>
+                <a href="#menu" class="block py-2 text-coffee-dark hover:text-coffee-light">Menú</a>
+                <a href="#galeria" class="block py-2 text-coffee-dark hover:text-coffee-light">Galería</a>
+                <a href="#contacto" class="block py-2 text-coffee-dark hover:text-coffee-light">Contacto</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section id="inicio" class="relative min-h-screen flex items-center coffee-pattern">
+            <div class="hero-gradient absolute inset-0"></div>
+            <img src="imagenes/idilio.jpg" alt="Bar Idilio" class="absolute inset-0 w-full h-full object-cover object-center z-0 opacity-60" style="pointer-events:none;" loading="lazy">
+            <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+                <h2 class="text-coffee-gold text-9xl">
+                    Bar Idilio
+                </h2>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+                    Desde 2015, ofrecemos el mejor café de Rosario en un ambiente acogedor y único
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#menu" class="bg-coffee-gold text-coffee-dark px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-colors duration-300">
+                        Ver Menú
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="nosotros" class="py-20 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-serif font-bold text-coffee-dark mb-4">Nuestra Historia</h2>
+                    <div class="w-24 h-1 bg-coffee-gold mx-auto mb-8"></div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-serif font-bold text-coffee-dark mb-6">Pasión por el café desde 2015</h3>
+                        <p class="text-gray-700 mb-6 leading-relaxed">
+                            Bar Idilio nació en 2015 con la misión de ofrecer la mejor experiencia cafetera de Rosario. 
+                            Desde nuestros inicios, nos hemos dedicado a seleccionar los mejores granos, crear recetas únicas 
+                            y brindar un servicio excepcional en un ambiente cálido y acogedor.
+                        </p>
+                        <p class="text-gray-700 mb-6 leading-relaxed">
+                            Nuestro compromiso va más allá del café: creamos momentos especiales, fomentamos la comunidad 
+                            y ofrecemos un refugio perfecto para estudiantes, profesionales y amantes del buen café.
+                        </p>
+                        
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div class="bg-coffee-cream p-4 rounded-lg">
+                                <i class="fas fa-calendar text-coffee-brown text-2xl mb-2"></i>
+                                <div class="text-2xl font-bold text-coffee-dark">9+</div>
+                                <div class="text-sm text-gray-600">Años de experiencia</div>
+                            </div>
+                            <div class="bg-coffee-cream p-4 rounded-lg">
+                                <i class="fas fa-heart text-coffee-brown text-2xl mb-2"></i>
+                                <div class="text-2xl font-bold text-coffee-dark">100%</div>
+                                <div class="text-sm text-gray-600">Café de calidad</div>
+                            </div>
+                            <div class="bg-coffee-cream p-4 rounded-lg">
+                                <i class="fas fa-users text-coffee-brown text-2xl mb-2"></i>
+                                <div class="text-2xl font-bold text-coffee-dark">1000+</div>
+                                <div class="text-sm text-gray-600">Clientes felices</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative">
+                        <div class="bg-coffee-gold p-8 rounded-lg">
+                            <div class="bg-white p-6 rounded-lg text-center">
+                                <p class="text-gray-700 mb-4 italic">
+                                    <span class="text-4xl align-middle text-coffee-brown mr-1">“</span>
+                                    El café y las tostadas de Idilio despiertan los sentidos y alimentan el alma. Cada taza cuenta una historia de pasión y dedicación.
+                                    <span class="text-4xl align-middle text-coffee-brown ml-1">”</span>
+                                </p>
+                                <div class="text-coffee-dark font-semibold">Equipo Bar Idilio</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="py-20 bg-coffee-cream">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-serif font-bold text-coffee-dark mb-4">Nuestro Menú</h2>
+                    <div class="w-24 h-1 bg-coffee-gold mx-auto mb-8"></div>
+                    <p class="text-gray-700 max-w-2xl mx-auto">
+                        Descubre nuestras especialidades, elaboradas con los mejores ingredientes y mucho amor
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Cafetería -->
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-coffee-brown rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-coffee text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-coffee-dark">Cafetería</h3>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="menu-item flex justify-between items-center p-3 rounded hover:bg-coffee-cream transition-colors">
+                                <div>
+                                    <h4 class="font-semibold text-coffee-dark">Café o cortado chico</h4>
+                                </div>
+                                <span class="text-coffee-brown font-bold">$1900</span>
+                            </div>
+                            
+                            <div class="menu-item flex justify-between items-center p-3 rounded hover:bg-coffee-cream transition-colors">
+                                <div>
+                                    <h4 class="font-semibold text-coffee-dark">Café o cortado Jarrita</h4>
+                                </div>
+                                <span class="text-coffee-brown font-bold">$2200</span>
+                            </div>
+                            
+                            <div class="menu-item flex justify-between items-center p-3 rounded hover:bg-coffee-cream transition-colors">
+                                <div>
+                                    <h4 class="font-semibold text-coffee-dark">Capuchino Chico</h4>
+                                </div>
+                                <span class="text-coffee-brown font-bold">$3000</span>
+                            </div>
+                            
+                            <div class="menu-item flex justify-between items-center p-3 rounded hover:bg-coffee-cream transition-colors">
+                                <div>
+                                    <h4 class="font-semibold text-coffee-dark">Capuchino Grande</h4>
+                                </div>
+                                <span class="text-coffee-brown font-bold">$4800</span>
+                            </div>
+                            
+                            <div class="menu-item flex justify-between items-center p-3 rounded hover:bg-coffee-cream transition-colors">
+                                <div>
+                                    <h4 class="font-semibold text-coffee-dark">Café con Leche</h4>
+                                </div>
+                                <span class="text-coffee-brown font-bold">$2700</span>
+                            </div>
+                            
+                            <div class="menu-item flex justify-between items-center p-3 rounded hover:bg-coffee-cream transition-colors">
+                                <div>
+                                    <h4 class="font-semibold text-coffee-dark">Café Doble</h4>
+                                </div>
+                                <span class="text-coffee-brown font-bold">$2700</span>
+                            </div>
+                            
+                            <div class="menu-item flex justify-between items-center p-3 rounded hover:bg-coffee-cream transition-colors">
+                                <div>
+                                    <h4 class="font-semibold text-coffee-dark">Remo</h4>
+                                </div>
+                                <span class="text-coffee-brown font-bold">$4500</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Promociones -->
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-coffee-gold rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-star text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-coffee-dark">Promociones</h3>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="menu-item flex justify-between items-start p-3 rounded hover:bg-coffee-cream transition-colors">
+                                <div>
+                                    <h4 class="font-semibold text-coffee-dark">Infusión Doble con 2 Facturas</h4>
+                                </div>
+                                <span class="text-coffee-brown font-bold">$3200</span>
+                            </div>
+                            
+                            <div class="menu-item flex justify-between items-start p-3 rounded hover:bg-coffee-cream transition-colors">
+                                <div>
+                                    <h4 class="font-semibold text-coffee-dark">Infusión Doble con Tostadas con queso Y mermelada</h4>
+                                </div>
+                                <span class="text-coffee-brown font-bold">$4500</span>
+                            </div>
+                            
+                            <div class="menu-item flex justify-between items-start p-3 rounded hover:bg-coffee-cream transition-colors">
+                                <div>
+                                    <h4 class="font-semibold text-coffee-dark">Infusión Doble con Tostadas con queso O mermelada</h4>
+                                </div>
+                                <span class="text-coffee-brown font-bold">$4000</span>
+                            </div>
+                            
+                            <div class="menu-item flex justify-between items-start p-3 rounded hover:bg-coffee-cream transition-colors">
+                                <div>
+                                    <h4 class="font-semibold text-coffee-dark">Capuchino con 2 Facturas</h4>
+                                </div>
+                                <span class="text-coffee-brown font-bold">$6000</span>
+                            </div>
+                            
+                            <div class="menu-item flex justify-between items-start p-3 rounded hover:bg-coffee-cream transition-colors">
+                                <div>
+                                    <h4 class="font-semibold text-coffee-dark">Infusión con medio Tostado</h4>
+                                </div>
+                                <span class="text-coffee-brown font-bold">$7000</span>
+                            </div>
+                            
+                            <div class="menu-item flex justify-between items-start p-3 rounded hover:bg-coffee-cream transition-colors">
+                                <div>
+                                    <h4 class="font-semibold text-coffee-dark">Tostado Entero</h4>
+                                </div>
+                                <span class="text-coffee-brown font-bold">$8000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <a href="https://maps.app.goo.gl/pC2PpFPStYCMjwT3A" target="_blank" 
+                       class="inline-block bg-coffee-brown text-white px-8 py-3 rounded-lg font-semibold hover:bg-coffee-dark transition-colors duration-300">
+                        <i class="fas fa-external-link-alt mr-2"></i>
+                        Ver Menú Completo
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="galeria" class="py-20 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-serif font-bold text-coffee-dark mb-4">Galería</h2>
+                    <div class="w-24 h-1 bg-coffee-gold mx-auto mb-8"></div>
+                    <p class="text-gray-700 max-w-2xl mx-auto">
+                        Descubre el ambiente acogedor y las delicias que te esperan en Bar Idilio
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="aspect-square bg-coffee-cream rounded-lg overflow-hidden group cursor-pointer gallery-img" data-img="imagenes/idilio cafe y tostadas.jpg">
+                        <img src="imagenes/idilio cafe y tostadas.jpg" alt="Café y Tostadas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                    </div>
+                    <div class="aspect-square bg-coffee-cream rounded-lg overflow-hidden group cursor-pointer gallery-img" data-img="imagenes/idilio cafe y tostadas2.jpg">
+                        <img src="imagenes/idilio cafe y tostadas2.jpg" alt="Café y Tostadas 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                    </div>
+                    <div class="aspect-square bg-coffee-cream rounded-lg overflow-hidden group cursor-pointer gallery-img" data-img="imagenes/idilio cafe.jpg">
+                        <img src="imagenes/idilio cafe.jpg" alt="Café" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                    </div>
+                    <div class="aspect-square bg-coffee-cream rounded-lg overflow-hidden group cursor-pointer gallery-img" data-img="imagenes/idilio decoracion.jpg">
+                        <img src="imagenes/idilio decoracion.jpg" alt="Decoración" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                    </div>
+                    <div class="aspect-square bg-coffee-cream rounded-lg overflow-hidden group cursor-pointer gallery-img" data-img="imagenes/idilio desayuno.jpg">
+                        <img src="imagenes/idilio desayuno.jpg" alt="Desayuno" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                    </div>
+                    <div class="aspect-square bg-coffee-cream rounded-lg overflow-hidden group cursor-pointer gallery-img" data-img="imagenes/idilio frente.jpg">
+                        <img src="imagenes/idilio frente.jpg" alt="Frente del Bar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                    </div>
+                    <div class="aspect-square bg-coffee-cream rounded-lg overflow-hidden group cursor-pointer gallery-img" data-img="imagenes/idilio interior.jpg">
+                        <img src="imagenes/idilio interior.jpg" alt="Interior del Bar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                    </div>
+                    <div class="aspect-square bg-coffee-cream rounded-lg overflow-hidden group cursor-pointer gallery-img" data-img="imagenes/idilio mesas.jpg">
+                        <img src="imagenes/idilio mesas.jpg" alt="Mesas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                    </div>
+                    <div class="aspect-square bg-coffee-cream rounded-lg overflow-hidden group cursor-pointer gallery-img" data-img="imagenes/idilio vista.jpg">
+                        <img src="imagenes/idilio vista.jpg" alt="Vista del Bar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                    </div>
+                    <div class="aspect-square bg-coffee-cream rounded-lg overflow-hidden group cursor-pointer gallery-img" data-img="imagenes/idilio.jpg">
+                        <img src="imagenes/idilio.jpg" alt="Bar Idilio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                    </div>
+                </div>
+                <!-- Modal para galería -->
+                <div id="gallery-modal-bg" class="hidden">
+                    <button id="gallery-modal-close" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+                    <button id="gallery-modal-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                    <img id="gallery-modal-img" src="" alt="Imagen ampliada">
+                    <button id="gallery-modal-next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contacto" class="py-20 bg-coffee-cream">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-serif font-bold text-coffee-dark mb-4">Contacto</h2>
+                    <div class="w-24 h-1 bg-coffee-gold mx-auto mb-8"></div>
+                    <p class="text-gray-700 max-w-2xl mx-auto">
+                        Visítanos y disfruta de la mejor experiencia cafetera de Rosario
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Contact Info -->
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <h3 class="text-2xl font-serif font-bold text-coffee-dark mb-6">Información de Contacto</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-coffee-brown rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-coffee-dark mb-1">Ubicación</h4>
+                                    <p class="text-gray-700">Jujuy 2097, Rosario.</p>
+                                    <a href="https://www.google.com/maps/place/Idilio/@-32.9358616,-60.649799,20z/data=!4m6!3m5!1s0x95b7ab3820aea52f:0xa2c32ac9d0e9abe5!8m2!3d-32.9359096!4d-60.6498104!16s%2Fg%2F1hhj3f3kn?entry=ttu" target="_blank" 
+                                       class="text-coffee-brown hover:text-coffee-dark transition-colors">
+                                        Ver en Google Maps <i class="fas fa-external-link-alt text-xs"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-coffee-brown rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-clock text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-coffee-dark mb-1">Horarios</h4>
+                                    <div class="text-gray-700">
+                                        <p>Lunes a Viernes: 7:00 - 13:00</p>
+                                        <p>Sábados: Cerrado</p>
+                                        <p>Domingos: Cerrado</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-coffee-brown rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-phone text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-coffee-dark mb-1">Teléfono</h4>
+                                    <p class="text-gray-700">Próximamente</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-coffee-brown rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-envelope text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-coffee-dark mb-1">Email</h4>
+                                    <p class="text-gray-700">info@baridilio.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 pt-8 border-t border-coffee-cream">
+                            <h4 class="font-semibold text-coffee-dark mb-4">Síguenos</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 bg-coffee-brown rounded-full flex items-center justify-center text-white hover:bg-coffee-dark transition-colors">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-coffee-brown rounded-full flex items-center justify-center text-white hover:bg-coffee-dark transition-colors">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-coffee-brown rounded-full flex items-center justify-center text-white hover:bg-coffee-dark transition-colors">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3347.091858964019!2d-60.65199968481167!3d-32.9359095792096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b7ab3820aea52f%3A0xa2c32ac9d0e9abe5!2sIdilio!5e0!3m2!1ses!2sar!4v1717777777777!5m2!1ses!2sar"
+                            width="100%" 
+                            height="400" 
+                            style="border:0;"
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            class="w-full h-full min-h-96">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-coffee-dark text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Logo and Description -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-coffee-gold rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-coffee text-coffee-dark text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-serif font-bold">Bar Idilio</h3>
+                            <p class="text-coffee-cream">El mejor café de Rosario</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Desde 2015, ofrecemos la mejor experiencia cafetera de Rosario en un ambiente 
+                        acogedor y único. Ven y descubre por qué somos el lugar favorito de los amantes del café.
+                    </p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#inicio" class="text-gray-300 hover:text-coffee-gold transition-colors">Inicio</a></li>
+                        <li><a href="#nosotros" class="text-gray-300 hover:text-coffee-gold transition-colors">Nosotros</a></li>
+                        <li><a href="#menu" class="text-gray-300 hover:text-coffee-gold transition-colors">Menú</a></li>
+                        <li><a href="#galeria" class="text-gray-300 hover:text-coffee-gold transition-colors">Galería</a></li>
+                        <li><a href="#contacto" class="text-gray-300 hover:text-coffee-gold transition-colors">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contacto</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>Idilio, Rioja 2051, Rosario, Santa Fe</p>
+                        <p><i class="fas fa-envelope mr-2"></i>info@baridilio.com</p>
+                        <div class="flex space-x-3 mt-4">
+                            <a href="#" class="w-8 h-8 bg-coffee-brown rounded-full flex items-center justify-center hover:bg-coffee-gold transition-colors">
+                                <i class="fab fa-facebook-f text-sm"></i>
+                            </a>
+                            <a href="#" class="w-8 h-8 bg-coffee-brown rounded-full flex items-center justify-center hover:bg-coffee-gold transition-colors">
+                                <i class="fab fa-instagram text-sm"></i>
+                            </a>
+                            <a href="#" class="w-8 h-8 bg-coffee-brown rounded-full flex items-center justify-center hover:bg-coffee-gold transition-colors">
+                                <i class="fab fa-whatsapp text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-coffee-brown mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 Bar Idilio. Todos los derechos reservados. | Idilio, Rioja 2051, Rosario, Santa Fe, Argentina</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
