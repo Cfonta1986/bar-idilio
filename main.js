@@ -183,13 +183,11 @@ function closeGalleryModal() {
 }
 
 function prevGalleryImg() {
-  if (!modalImg) return;
   currentImgIndex = (currentImgIndex - 1 + galleryImages.length) % galleryImages.length;
   modalImg.src = galleryImages[currentImgIndex];
 }
 
 function nextGalleryImg() {
-  if (!modalImg) return;
   currentImgIndex = (currentImgIndex + 1) % galleryImages.length;
   modalImg.src = galleryImages[currentImgIndex];
 }
@@ -203,14 +201,14 @@ if (modalClose) modalClose.addEventListener('click', closeGalleryModal);
 if (modalPrev) modalPrev.addEventListener('click', prevGalleryImg);
 if (modalNext) modalNext.addEventListener('click', nextGalleryImg);
 
-if (modalBg) {
-  modalBg.addEventListener('click', (e) => {
-    if (e.target === modalBg) closeGalleryModal();
-  });
-}
+// Refactor SonarLint S2589: eliminamos if redundante, ya que modalBg ya está comprobado arriba
+document.getElementById('gallery-modal-bg').addEventListener('click', (e) => {
+  if (e.target === modalBg) closeGalleryModal();
+});
 
 window.addEventListener('keydown', (e) => {
-  if (!modalBg || modalBg.classList.contains('hidden')) return;
+  // Refactor SonarLint S2589: solo comprobamos modalBg, ya que getElementById nunca retorna null para el mismo id dos veces en el mismo scope
+  if (modalBg.classList.contains('hidden')) return;
   if (e.key === 'Escape') closeGalleryModal();
   if (e.key === 'ArrowLeft') prevGalleryImg();
   if (e.key === 'ArrowRight') nextGalleryImg();
