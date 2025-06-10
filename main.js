@@ -118,7 +118,11 @@ const galleryImages = [
   "imagenes/idilio interior.jpg",
   "imagenes/idilio mesas.jpg",
   "imagenes/idilio vista.jpg",
-  "imagenes/idilio.jpg"
+  "imagenes/idilio.jpg",
+  "imagenes/perrito.JPG",
+  "imagenes/frente nuevo.jpg",
+  "imagenes/frente lateral.jpg",
+  "imagenes/decoracion y cafe.jpg"
 ];
 
 const modalBg = document.getElementById('gallery-modal-bg');
