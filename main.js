@@ -218,46 +218,10 @@ window.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight') nextGalleryImg();
 });
 
-// --- Mostrar imagen de menú completo en el modal ---
+// --- Abrir PDF del menú completo en nueva pestaña ---
 const openMenuImageBtn = document.getElementById('open-menu-image');
-if (openMenuImageBtn && modalBg && modalImg) {
+if (openMenuImageBtn) {
   openMenuImageBtn.addEventListener('click', function () {
-    modalImg.src = 'imagenes/idilio menu.jpg';
-    document.body.appendChild(modalBg);
-    modalBg.classList.remove('hidden');
-    document.body.classList.add('modal-open');
-    modalBg.style.position = 'fixed';
-    modalBg.style.top = '0';
-    modalBg.style.left = '0';
-    modalBg.style.width = '100vw';
-    modalBg.style.height = '100vh';
-    modalBg.style.background = 'rgba(0,0,0,0.92)';
-    modalBg.style.zIndex = '9999';
-    if (modalImg) {
-      modalImg.style.position = 'fixed';
-      modalImg.style.top = '50%';
-      modalImg.style.left = '50%';
-      modalImg.style.transform = 'translate(-50%, -50%)';
-      modalImg.style.maxWidth = '96vw';
-      modalImg.style.maxHeight = '92vh';
-      modalImg.style.objectFit = 'contain';
-      modalImg.style.margin = '0';
-      modalImg.style.display = 'block';
-      modalImg.style.background = '#fff';
-      modalImg.style.borderRadius = '1rem';
-      modalImg.style.boxShadow = '0 4px 32px rgba(0,0,0,0.4)';
-      modalImg.style.zIndex = '10000';
-    }
-    if (modalPrev) modalPrev.style.display = 'none';
-    if (modalNext) modalNext.style.display = 'none';
-    [modalClose, modalPrev, modalNext].forEach(btn => {
-      if (btn) btn.style.zIndex = '10001';
-    });
+    window.open('MENU/idilio menu.pdf', '_blank');
   });
-  if (modalClose) {
-    modalClose.addEventListener('click', function () {
-      if (modalPrev) modalPrev.style.display = '';
-      if (modalNext) modalNext.style.display = '';
-    });
-  }
 }
