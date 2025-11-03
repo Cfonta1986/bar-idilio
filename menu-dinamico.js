@@ -26,12 +26,10 @@ async function fetchMenuFromSheets() {
         // Parse cafetería
         const cafRows = cafCsv.split('\n').map(row => row.split(','));
         const cafItems = cafRows.slice(1).filter(r => r[0] && r[0].trim() !== '');
-        // Parse promos
-        console.log('DEBUG promoCsv:', promoCsv);
-        const promoRows = promoCsv.split('\n').map(row => row.split(','));
-        console.log('DEBUG promoRows:', promoRows);
-        const promoItems = promoRows.slice(1).filter(r => r[0] && r[0].trim() !== '');
-        renderMenu(cafItems, promoItems);
+    // Parse promos
+    const promoRows = promoCsv.split('\n').map(row => row.split(','));
+    const promoItems = promoRows.slice(1).filter(r => r[0] && r[0].trim() !== '');
+    renderMenu(cafItems, promoItems);
     } catch (e) {
         console.error('Error general al cargar el menú:', e);
         document.getElementById('menu-dinamico').innerHTML = '<div class="text-red-600">No se pudo cargar el menú dinámico.</div>';
@@ -70,7 +68,6 @@ function renderMenu(cafeteriaItems, promoItems) {
             return nombre && precio ? {nombre, precio} : null;
         })
         .filter(Boolean);
-    console.log('DEBUG promos FINAL:', promos);
     let html = `<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="bg-white/90 rounded-2xl p-6 md:p-10 shadow-lg">
             <div class="flex items-center mb-6">
@@ -104,7 +101,6 @@ function renderMenu(cafeteriaItems, promoItems) {
         </div>
     </div>`;
     container.innerHTML = html;
-    console.log('DEBUG renderMenu ejecutado, HTML renderizado');
 }
 
 document.addEventListener('DOMContentLoaded', fetchMenuFromSheets);
