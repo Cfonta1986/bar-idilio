@@ -19,7 +19,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
@@ -38,7 +38,44 @@
                     },
                     fontFamily: {
                         'serif': ['Playfair Display', 'serif'],
-                        'sans': ['Inter', 'sans-serif']
+                        'sans': ['Inter', 'sans-serif'],
+                        'modern': ['Poppins', 'sans-serif']
+                    },
+                    animation: {
+                        'fadeIn': 'fadeIn 0.6s ease-out',
+                        'slideUp': 'slideUp 0.6s ease-out',
+                        'slideLeft': 'slideLeft 0.6s ease-out',
+                        'slideRight': 'slideRight 0.6s ease-out',
+                        'scaleIn': 'scaleIn 0.5s ease-out',
+                        'bounce-slow': 'bounce 2s infinite',
+                        'bubble': 'bubble 8s linear infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(50px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        slideRight: {
+                            '0%': { opacity: '0', transform: 'translateX(50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' }
+                        },
+                        bubble: {
+                            '0%': { transform: 'translateY(0) scale(1)' },
+                            '80%': { transform: 'translateY(-120vh) scale(1.2)' },
+                            '100%': { transform: 'translateY(-120vh) scale(0.8)' }
+                        }
                     }
                 }
             }
@@ -46,6 +83,8 @@
     </script>
 </head>
 <body class="font-sans bg-coffee-cream">
+    <!-- Barra de progreso de scroll -->
+    <div id="scroll-progress" style="position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,#DAA520,#8B4513);z-index:9999;transition:width 0.2s;"></div>
     <!-- Header -->
     <header class="bg-white shadow-lg fixed w-full top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -92,35 +131,58 @@
     <!-- Main Content -->
     <main class="pt-20">
         <!-- Hero Section -->
-        <section id="inicio" class="relative min-h-screen flex items-center coffee-pattern">
+        <section id="inicio" class="relative min-h-screen flex items-center coffee-pattern overflow-hidden">
+            <!-- Fondo animado de burbujas -->
+            <div class="absolute inset-0 pointer-events-none z-0" id="bubble-bg"></div>
             <div class="hero-gradient absolute inset-0"></div>
-            <img src="imagenes/frente lateral.jpg" alt="Bar Idilio" class="absolute inset-0 w-full h-full object-cover object-center z-0 opacity-60" style="pointer-events:none;" loading="lazy">
+            <div class="parallax-bg absolute inset-0 w-full h-full">
+                <img src="imagenes2/frente_nuevo.png" alt="Bar Idilio" class="absolute inset-0 w-full h-full object-cover object-center z-0 opacity-60 parallax-element" style="pointer-events:none;" loading="lazy">
+            </div>
             <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-                <h2 class="text-coffee-gold text-9xl">
-                    Bar Idilio
-                </h2>
-                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+                <div class="animate-fadeIn">
+                    <h2 class="font-modern text-coffee-gold text-6xl md:text-9xl font-bold drop-shadow-2xl animate-slideUp">
+                        Bar Idilio
+                    </h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-transparent via-coffee-gold to-transparent mx-auto my-6 animate-scaleIn"></div>
+                </div>
+                <p class="text-lg md:text-2xl mb-8 max-w-3xl mx-auto font-light leading-relaxed animate-slideUp animation-delay-300 drop-shadow-lg">
                     Desde 2011, ofrecemos el mejor café de Rosario en un ambiente acogedor y único
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#menu" class="bg-coffee-gold text-coffee-dark px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-colors duration-300">
-                        Ver Menú
+                <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slideUp animation-delay-600">
+                    <a href="#menu" class="group bg-gradient-to-r from-coffee-gold to-yellow-500 text-coffee-dark px-8 py-4 rounded-full font-semibold font-modern transition-all duration-300 hover:scale-105 hover:shadow-2xl transform hover:-translate-y-1 glassmorphism">
+                        <span class="flex items-center justify-center">
+                            Ver Menú
+                            <i class="fas fa-arrow-down ml-2 group-hover:translate-y-1 transition-transform duration-300"></i>
+                        </span>
                     </a>
                 </div>
+                <!-- Floating elements -->
+                <div class="absolute top-10 left-10 opacity-30 animate-bounce-slow">
+                    <i class="fas fa-coffee text-coffee-gold text-3xl"></i>
+                </div>
+                <div class="absolute bottom-20 right-10 opacity-30 animate-bounce-slow animation-delay-1000">
+                    <i class="fas fa-heart text-coffee-gold text-2xl"></i>
+                </div>
+            </div>
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce text-white">
+                <i class="fas fa-chevron-down text-xl opacity-70"></i>
             </div>
         </section>
 
         <!-- About Section -->
         <section id="nosotros" class="py-20 bg-white">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-serif font-bold text-coffee-dark mb-4">Nuestra Historia</h2>
-                    <div class="w-24 h-1 bg-coffee-gold mx-auto mb-8"></div>
+                <div class="text-center mb-16 scroll-animate">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-coffee-dark mb-4 animate-slideUp">Nuestra Historia</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-coffee-gold via-yellow-500 to-coffee-gold mx-auto mb-8 animate-scaleIn"></div>
                 </div>
                 
                 <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h3 class="text-2xl font-serif font-bold text-coffee-dark mb-6">Pasión por el café desde 2011</h3>
+                    <div class="scroll-animate animate-slideLeft">
+                        <h3 class="text-2xl md:text-3xl font-serif font-bold text-coffee-dark mb-6 relative">
+                            <span class="bg-gradient-to-r from-coffee-brown to-coffee-dark bg-clip-text text-transparent">Pasión por el café desde 2011</span>
+                        </h3>
                         <p class="text-gray-700 mb-6 leading-relaxed">
                             Bar Idilio nació en 2011 con la misión de ofrecer la mejor experiencia cafetera de Rosario. 
                             Desde nuestros inicios, nos hemos dedicado a seleccionar los mejores granos, crear recetas únicas 
@@ -132,33 +194,42 @@
                         </p>
                         
                         <div class="grid grid-cols-3 gap-4 text-center">
-                            <div class="bg-coffee-cream p-4 rounded-lg">
-                                <i class="fas fa-calendar text-coffee-brown text-2xl mb-2"></i>
-                                <div class="text-2xl font-bold text-coffee-dark">14+</div>
-                                <div class="text-sm text-gray-600">Años de experiencia</div>
+                            <div class="glassmorphism-card hover-lift">
+                                <i class="fas fa-calendar text-coffee-brown text-3xl mb-3 animate-bounce-slow"></i>
+                                <div class="text-2xl font-bold text-coffee-dark font-modern">14+</div>
+                                <div class="text-sm text-gray-600 font-modern">Años de experiencia</div>
                             </div>
-                            <div class="bg-coffee-cream p-4 rounded-lg">
-                                <i class="fas fa-heart text-coffee-brown text-2xl mb-2"></i>
-                                <div class="text-2xl font-bold text-coffee-dark">100%</div>
-                                <div class="text-sm text-gray-600">Café de calidad</div>
+                            <div class="glassmorphism-card hover-lift animation-delay-200">
+                                <i class="fas fa-heart text-coffee-brown text-3xl mb-3 animate-bounce-slow"></i>
+                                <div class="text-2xl font-bold text-coffee-dark font-modern">100%</div>
+                                <div class="text-sm text-gray-600 font-modern">Café de calidad</div>
                             </div>
-                            <div class="bg-coffee-cream p-4 rounded-lg">
-                                <i class="fas fa-users text-coffee-brown text-2xl mb-2"></i>
-                                <div class="text-2xl font-bold text-coffee-dark">1000+</div>
-                                <div class="text-sm text-gray-600">Clientes felices</div>
+                            <div class="glassmorphism-card hover-lift animation-delay-400">
+                                <i class="fas fa-users text-coffee-brown text-3xl mb-3 animate-bounce-slow"></i>
+                                <div class="text-2xl font-bold text-coffee-dark font-modern">1000+</div>
+                                <div class="text-sm text-gray-600 font-modern">Clientes felices</div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="relative">
-                        <div class="bg-coffee-gold p-8 rounded-lg">
-                            <div class="bg-white p-6 rounded-lg text-center">
-                                <p class="text-gray-700 mb-4 italic">
-                                    <span class="text-4xl align-middle text-coffee-brown mr-1">“</span>
+                    <div class="relative scroll-animate animate-slideRight">
+                        <div class="glassmorphism-quote hover-lift-subtle">
+                            <div class="bg-white/90 backdrop-blur-sm p-8 rounded-2xl text-center shadow-2xl border border-white/20">
+                                <div class="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-br from-coffee-gold to-yellow-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-quote-left text-white text-sm"></i>
+                                </div>
+                                <p class="text-gray-700 mb-6 italic font-modern text-lg leading-relaxed">
                                     El café y las tostadas de Idilio despiertan los sentidos y alimentan el alma. Cada taza cuenta una historia de pasión y dedicación.
-                                    <span class="text-4xl align-middle text-coffee-brown ml-1">”</span>
                                 </p>
-                                <div class="text-coffee-dark font-semibold">Equipo Bar Idilio</div>
+                                <div class="flex items-center justify-center">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-coffee-brown to-coffee-dark rounded-full flex items-center justify-center mr-3">
+                                        <i class="fas fa-coffee text-white"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-coffee-dark font-semibold font-modern">Equipo Bar Idilio</div>
+                                        <div class="text-sm text-gray-500">Desde 2011</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -169,22 +240,22 @@
         <!-- Menu Section -->
         <section id="menu" class="py-20 bg-coffee-cream">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-serif font-bold text-coffee-dark mb-4">Nuestro Menú</h2>
-                    <div class="w-24 h-1 bg-coffee-gold mx-auto mb-8"></div>
-                    <p class="text-gray-700 max-w-2xl mx-auto">
-                        Descubre nuestras especialidades, elaboradas con los mejores ingredientes y mucho amor
+                <div class="text-center mb-16 scroll-animate">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-coffee-dark mb-4 animate-slideUp">Nuestro Menú</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-coffee-gold via-yellow-500 to-coffee-gold mx-auto mb-8 animate-scaleIn"></div>
+                    <p class="text-gray-700 max-w-2xl mx-auto font-modern leading-relaxed animate-fadeIn">
+                        Descubrí nuestras especialidades, elaboradas con los mejores ingredientes y mucho amor
                     </p>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-12">
                     <!-- Cafetería -->
-                    <div class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="glassmorphism-card hover-lift scroll-animate animate-slideLeft">
                         <div class="flex items-center mb-6">
-                            <div class="w-12 h-12 bg-coffee-brown rounded-full flex items-center justify-center mr-4">
-                                <i class="fas fa-coffee text-white"></i>
+                            <div class="w-14 h-14 bg-gradient-to-br from-coffee-brown to-coffee-dark rounded-full flex items-center justify-center mr-4 hover-lift-subtle">
+                                <i class="fas fa-coffee text-white text-xl"></i>
                             </div>
-                            <h3 class="text-2xl font-serif font-bold text-coffee-dark">Cafetería</h3>
+                            <h3 class="text-2xl md:text-3xl font-serif font-bold text-coffee-dark">Cafetería</h3>
                         </div>
                         
                         <div class="space-y-4">
@@ -240,12 +311,12 @@
                     </div>
 
                     <!-- Promociones -->
-                    <div class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="glassmorphism-card hover-lift scroll-animate animate-slideRight animation-delay-300">
                         <div class="flex items-center mb-6">
-                            <div class="w-12 h-12 bg-coffee-gold rounded-full flex items-center justify-center mr-4">
-                                <i class="fas fa-star text-white"></i>
+                            <div class="w-14 h-14 bg-gradient-to-br from-coffee-gold to-yellow-500 rounded-full flex items-center justify-center mr-4 hover-lift-subtle animate-bounce-slow">
+                                <i class="fas fa-star text-white text-xl"></i>
                             </div>
-                            <h3 class="text-2xl font-serif font-bold text-coffee-dark">Promociones</h3>
+                            <h3 class="text-2xl md:text-3xl font-serif font-bold text-coffee-dark">Promociones</h3>
                         </div>
                         
                         <div class="space-y-4">
@@ -295,8 +366,8 @@
                 </div>
 
                 <div class="text-center mt-12">
-                    <button id="open-menu-image" type="button" class="inline-block bg-coffee-brown text-white px-8 py-3 rounded-lg font-semibold hover:bg-coffee-dark transition-colors duration-300">
-                        <i class="fas fa-external-link-alt mr-2"></i>
+                    <button id="open-menu-image" type="button" class="menu-complete-btn">
+                        <i class="fas fa-external-link-alt"></i>
                         Ver Menú Completo
                     </button>
                 </div>
@@ -306,40 +377,43 @@
         <!-- Gallery Section -->
         <section id="galeria" class="py-20 bg-white">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-serif font-bold text-coffee-dark mb-4">Galería</h2>
-                    <div class="w-24 h-1 bg-coffee-gold mx-auto mb-8"></div>
-                    <p class="text-gray-700 max-w-2xl mx-auto">
+                <div class="text-center mb-16 scroll-animate">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-coffee-dark mb-4 animate-slideUp">Galería</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-coffee-gold via-yellow-500 to-coffee-gold mx-auto mb-8 animate-scaleIn"></div>
+                    <p class="text-gray-700 max-w-2xl mx-auto font-modern leading-relaxed animate-fadeIn">
                         Descubre el ambiente acogedor y las delicias que te esperan en Bar Idilio
                     </p>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <div class="aspect-square bg-coffee-cream rounded-lg overflow-hidden group cursor-pointer gallery-img" data-img="imagenes/idilio cafe y tostadas.jpg">
-                        <img src="imagenes/idilio cafe y tostadas.jpg" alt="Café y Tostadas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 scroll-animate">
+                    <div class="aspect-square bg-coffee-cream rounded-2xl overflow-hidden group cursor-pointer gallery-img hover-lift glassmorphism-card" data-img="imagenes/idilio cafe y tostadas.jpg">
+                        <img src="imagenes2/idilio_cafe_y_tostadas.png" alt="Café y Tostadas" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500 group-hover:brightness-110" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="text-white font-modern font-medium">Café y Tostadas</span>
+                        </div>
                     </div>
                     <div class="aspect-square bg-coffee-cream rounded-lg overflow-hidden group cursor-pointer gallery-img" data-img="imagenes/idilio cafe y tostadas2.jpg">
-                        <img src="imagenes/idilio cafe y tostadas2.jpg" alt="Café y Tostadas 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img src="imagenes2/idilio cafe y tostadas2.png" alt="Café y Tostadas 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
                     </div>
                     <div class="aspect-square bg-coffee-cream rounded-lg overflow-hidden group cursor-pointer gallery-img" data-img="imagenes/idilio cafe.jpg">
-                        <img src="imagenes/idilio cafe.jpg" alt="Café" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img src="imagenes2/idilio_cafe.png" alt="Café" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
                     </div>
                     <div class="aspect-square bg-coffee-cream rounded-lg overflow-hidden group cursor-pointer gallery-img" data-img="imagenes/idilio decoracion.jpg">
-                        <img src="imagenes/idilio decoracion.jpg" alt="Decoración" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img src="imagenes2/idilio_decoracion.png" alt="Decoración" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
                     </div>
                     <div class="aspect-square bg-coffee-cream rounded-lg overflow-hidden group cursor-pointer gallery-img" data-img="imagenes/idilio desayuno.jpg">
-                        <img src="imagenes/idilio desayuno.jpg" alt="Desayuno" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img src="imagenes2/idilio_desayuno.png" alt="Desayuno" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
                     </div>
                     <div class="aspect-square bg-coffee-cream rounded-lg overflow-hidden group cursor-pointer gallery-img" data-img="imagenes/idilio interior.jpg">
-                        <img src="imagenes/idilio interior.jpg" alt="Interior del Bar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img src="imagenes2/idilio_interior.png" alt="Interior del Bar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
                     </div>
                     <div class="aspect-square bg-coffee-cream rounded-lg overflow-hidden group cursor-pointer gallery-img" data-img="imagenes/idilio mesas.jpg">
-                        <img src="imagenes/idilio mesas.jpg" alt="Mesas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img src="imagenes2/idilio_mesas.png" alt="Mesas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
                     </div>
                     <div class="aspect-square bg-coffee-cream rounded-lg overflow-hidden group cursor-pointer gallery-img" data-img="imagenes/idilio vista.jpg">
-                        <img src="imagenes/idilio vista.jpg" alt="Vista del Bar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img src="imagenes2/frente_nuevo.png" alt="Vista del Bar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
                     </div>
                     <div class="aspect-square bg-coffee-cream rounded-lg overflow-hidden group cursor-pointer gallery-img" data-img="imagenes/idilio.jpg">
-                        <img src="imagenes/idilio.jpg" alt="Bar Idilio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                        <img src="imagenes2/idilio.png" alt="Bar Idilio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
                     </div>
                     <div class="aspect-square bg-coffee-cream rounded-lg overflow-hidden group cursor-pointer gallery-img" data-img="imagenes/perrito.JPG">
                         <img src="imagenes/perrito.JPG" alt="Perrito" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
@@ -419,18 +493,7 @@
                                     <p class="text-gray-700"><a href="https://wa.me/3416213859" target="_blank" rel="noopener" class="hover:underline">3416213859</a></p>
                                 </div>
                             </div>
-                            
-                            <!--
-                            <div class="flex items-start">
-                                <div class="w-12 h-12 bg-coffee-brown rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                    <i class="fas fa-envelope text-white"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-coffee-dark mb-1">Email</h4>
-                                    <p class="text-gray-700"><a href="mailto:info@baridilio.com" class="hover:underline">info@baridilio.com</a></p>
-                                </div>
-                            </div>
-                            -->
+
                         </div>
                         
                         <div class="mt-8 pt-8 border-t border-coffee-cream">
@@ -467,6 +530,7 @@
 
     <!-- Footer -->
     <footer class="bg-coffee-dark text-white py-12">
+    <!-- Botón flotante de WhatsApp -->
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-4 gap-8">
                 <!-- Logo and Description -->

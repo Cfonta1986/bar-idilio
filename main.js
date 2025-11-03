@@ -1,3 +1,122 @@
+// --- Barra de progreso de scroll ---
+window.addEventListener('scroll', () => {
+    const scrollProgress = document.getElementById('scroll-progress');
+    if (!scrollProgress) return;
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (scrollTop / docHeight) * 100;
+    scrollProgress.style.width = scrolled + '%';
+});
+
+// --- Fondo animado de burbujas en hero ---
+function createBubbles() {
+    const bubbleBg = document.getElementById('bubble-bg');
+    if (!bubbleBg) return;
+    bubbleBg.innerHTML = '';
+    const colors = ['#DAA520', '#8B4513', '#F5E6D3', '#D2691E'];
+    for (let i = 0; i < 12; i++) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        const size = Math.random() * 36 + 32;
+        bubble.style.width = size + 'px';
+        bubble.style.height = size + 'px';
+        bubble.style.left = Math.random() * 95 + '%';
+        bubble.style.background = colors[Math.floor(Math.random() * colors.length)];
+        bubble.style.animationDelay = (Math.random() * 6) + 's';
+        bubbleBg.appendChild(bubble);
+    }
+}
+document.addEventListener('DOMContentLoaded', createBubbles);
+
+// --- Microinteracción: resaltar menú activo al hacer scroll ---
+function highlightActiveMenu() {
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    let lastActive = null;
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 120;
+            if (window.scrollY >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('text-coffee-gold', 'font-bold');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('text-coffee-gold', 'font-bold');
+            }
+        });
+    });
+}
+document.addEventListener('DOMContentLoaded', highlightActiveMenu);
+// EFECTOS VISUALES MODERNOS - Bar Idilio
+
+// Parallax Effect
+function initParallax() {
+    const parallaxElements = document.querySelectorAll('.parallax-element');
+    
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+        
+        parallaxElements.forEach(element => {
+            element.style.transform = `translateY(${rate}px)`;
+        });
+    });
+}
+
+// Scroll Animations
+function initScrollAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                // Para elementos con animación específica de Tailwind
+                if (entry.target.classList.contains('animate-slideUp')) {
+                    entry.target.style.animationDelay = '0s';
+                }
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    document.querySelectorAll('.scroll-animate').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// Smooth Hover Effects
+function initHoverEffects() {
+    document.querySelectorAll('.hover-lift, .hover-lift-subtle').forEach(element => {
+        element.addEventListener('mouseenter', function() {
+            this.style.transform = this.classList.contains('hover-lift') 
+                ? 'translateY(-8px) scale(1.02)' 
+                : 'translateY(-4px)';
+        });
+        
+        element.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+}
+
+// Loading Animation
+function initLoadingEffects() {
+    window.addEventListener('load', () => {
+        document.body.classList.add('loaded');
+        
+        // Trigger initial animations
+        setTimeout(() => {
+            initScrollAnimations();
+            initParallax();
+            initHoverEffects();
+        }, 100);
+    });
+}
+
 // Menú móvil: abrir/cerrar
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
@@ -225,3 +344,26 @@ if (openMenuImageBtn) {
     window.open('MENU/idilio menu.pdf', '_blank');
   });
 }
+
+// Initialize all modern effects
+document.addEventListener('DOMContentLoaded', () => {
+    initLoadingEffects();
+    createBubbles();
+    highlightActiveMenu();
+});
+
+// Header scroll effect
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (header) {
+        if (window.scrollY > 100) {
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+            header.style.backdropFilter = 'blur(10px)';
+            header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+        } else {
+            header.style.background = '#ffffff';
+            header.style.backdropFilter = 'none';
+            header.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)';
+        }
+    }
+});
