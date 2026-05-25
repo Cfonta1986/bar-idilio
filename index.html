@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Idilio - El mejor café de Rosario</title>
+    <meta name="description" content="Bar Idilio, la mejor cafetería de Rosario desde 2011. Descubre nuestro delicioso café, tostadas y ambiente acogedor en el corazón de la ciudad.">
+    <meta name="keywords" content="café Rosario, cafetería, tostadas, desayuno, merienda, Bar Idilio">
+    <meta name="author" content="Bar Idilio">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Bar Idilio - El mejor café de Rosario">
+    <meta property="og:description" content="Disfruta del mejor café de Rosario en Bar Idilio. Ambiente acogedor y productos de calidad desde 2011.">
+    <meta property="og:type" content="website">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts - Premium & Minimalist -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bar-deep': '#2A2420',
+                        'bar-brown': '#6B5D52',
+                        'bar-gold': '#B8860B',
+                        'bar-cream': '#F9F7F3',
+                        'bar-off-white': '#FEFDFB',
+                        'bar-gray': '#8B8680'
+                    },
+                    fontFamily: {
+                        'display': ['Cormorant Garamond', 'serif'],
+                        'sans': ['Outfit', 'sans-serif']
+                    },
+                    animation: {
+                        'fadeIn': 'fadeIn 0.6s ease-out',
+                        'slideUp': 'slideUp 0.6s ease-out',
+                        'slideLeft': 'slideLeft 0.6s ease-out',
+                        'slideRight': 'slideRight 0.6s ease-out',
+                        'scaleIn': 'scaleIn 0.5s ease-out',
+                        'bounce-slow': 'bounce 2s infinite',
+                        'bubble': 'bubble 8s linear infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(50px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        slideRight: {
+                            '0%': { opacity: '0', transform: 'translateX(50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' }
+                        },
+                        bubble: {
+                            '0%': { transform: 'translateY(0) scale(1)' },
+                            '80%': { transform: 'translateY(-120vh) scale(1.2)' },
+                            '100%': { transform: 'translateY(-120vh) scale(0.8)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-bar-off-white text-bar-deep">
+    <!-- Barra de progreso de scroll -->
+    <div id="scroll-progress" style="position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,#B8860B,#6B5D52);z-index:9999;transition:width 0.2s;"></div>
+    <!-- Header -->
+    <header class="bg-bar-off-white fixed w-full top-0 z-50 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-5">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-bar-deep rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-coffee text-bar-gold text-lg"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-display font-bold text-bar-deep">Bar Idilio</h1>
+                        <p class="text-xs text-bar-gray">Café Premium</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8" aria-label="Navegación principal">
+                    <a href="#inicio" class="text-bar-deep hover:text-bar-gold transition-colors duration-300 font-medium text-sm">Inicio</a>
+                    <a href="#nosotros" class="text-bar-deep hover:text-bar-gold transition-colors duration-300 font-medium text-sm">Nosotros</a>
+                    <a href="#menu" class="text-bar-deep hover:text-bar-gold transition-colors duration-300 font-medium text-sm">Menú</a>
+                    <a href="#galeria" class="text-bar-deep hover:text-bar-gold transition-colors duration-300 font-medium text-sm">Galería</a>
+                    <a href="#contacto" class="text-bar-deep hover:text-bar-gold transition-colors duration-300 font-medium text-sm">Contacto</a>
+                </nav>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-button" class="md:hidden text-bar-deep">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <nav id="mobile-menu" class="mobile-menu md:hidden bg-bar-off-white absolute top-full left-0 w-full border-t border-bar-brown border-opacity-10" aria-label="Navegación móvil">
+            <div class="px-4 py-3 space-y-2">
+                <a href="#inicio" class="block py-3 text-bar-deep hover:text-bar-gold transition-colors">Inicio</a>
+                <a href="#nosotros" class="block py-3 text-bar-deep hover:text-bar-gold transition-colors">Nosotros</a>
+                <a href="#menu" class="block py-3 text-bar-deep hover:text-bar-gold transition-colors">Menú</a>
+                <a href="#galeria" class="block py-3 text-bar-deep hover:text-bar-gold transition-colors">Galería</a>
+                <a href="#contacto" class="block py-3 text-bar-deep hover:text-bar-gold transition-colors">Contacto</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section id="inicio" class="relative min-h-screen flex items-center overflow-hidden pt-20">
+            <div class="absolute inset-0 bg-bar-off-white z-0"></div>
+            <div class="parallax-bg absolute inset-0 w-full h-full">
+                <img src="imagenes2/frente_nuevo.png" alt="Bar Idilio" class="absolute inset-0 w-full h-full object-cover object-center z-0 opacity-40 parallax-element" style="pointer-events:none;" loading="lazy">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-r from-bar-off-white via-transparent to-bar-off-white z-1"></div>
+
+            <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full">
+                <div class="animate-fadeIn">
+                    <h2 class="font-display text-bar-deep text-6xl md:text-8xl font-bold animate-slideUp tracking-tight">
+                        Bar Idilio
+                    </h2>
+                    <div class="w-16 h-0.5 bg-bar-gold mx-auto my-8 animate-scaleIn"></div>
+                </div>
+                <p class="text-base md:text-lg mb-12 max-w-2xl mx-auto font-light leading-relaxed animate-slideUp animation-delay-200 text-bar-brown">
+                    Desde 2011, ofrecemos el mejor café de Rosario en un ambiente acogedor y único
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slideUp animation-delay-400">
+                    <a href="#menu" class="group bg-bar-deep text-bar-off-white px-10 py-4 rounded-lg font-semibold transition-all duration-300 hover:bg-bar-brown hover:shadow-lg transform hover:-translate-y-0.5 inline-flex items-center justify-center">
+                        <span>Ver Menú</span>
+                        <i class="fas fa-arrow-down ml-3 group-hover:translate-y-1 transition-transform duration-300 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce text-bar-brown z-20">
+                <i class="fas fa-chevron-down text-lg opacity-60"></i>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="nosotros" class="py-24 bg-bar-cream">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-20 scroll-animate">
+                    <h2 class="text-4xl md:text-5xl font-display font-bold text-bar-deep mb-6 animate-slideUp">Nuestra Historia</h2>
+                    <div class="w-16 h-0.5 bg-bar-gold mx-auto animate-scaleIn"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="scroll-animate animate-slideLeft">
+                        <h3 class="text-3xl md:text-4xl font-display font-bold text-bar-deep mb-8">
+                            Pasión por el café desde 2011
+                        </h3>
+                        <p class="text-base text-bar-brown mb-6 leading-relaxed">
+                            Bar Idilio nació en 2011 con la misión de ofrecer la mejor experiencia cafetera de Rosario.
+                            Desde nuestros inicios, nos hemos dedicado a seleccionar los mejores granos, crear recetas únicas
+                            y brindar un servicio excepcional en un ambiente cálido y acogedor.
+                        </p>
+                        <p class="text-base text-bar-brown mb-12 leading-relaxed">
+                            Nuestro compromiso va más allá del café: creamos momentos especiales, fomentamos la comunidad
+                            y ofrecemos un refugio perfecto para estudiantes, profesionales y amantes del buen café.
+                        </p>
+
+                        <div class="grid grid-cols-3 gap-6">
+                            <div class="text-center p-6 bg-bar-off-white rounded-lg border border-bar-brown border-opacity-10 hover:border-opacity-30 transition-all duration-300">
+                                <i class="fas fa-calendar text-bar-gold text-3xl mb-4"></i>
+                                <div class="text-2xl font-bold text-bar-deep font-display">14+</div>
+                                <div class="text-xs text-bar-gray mt-2">Años de experiencia</div>
+                            </div>
+                            <div class="text-center p-6 bg-bar-off-white rounded-lg border border-bar-brown border-opacity-10 hover:border-opacity-30 transition-all duration-300">
+                                <i class="fas fa-heart text-bar-gold text-3xl mb-4"></i>
+                                <div class="text-2xl font-bold text-bar-deep font-display">100%</div>
+                                <div class="text-xs text-bar-gray mt-2">Café de calidad</div>
+                            </div>
+                            <div class="text-center p-6 bg-bar-off-white rounded-lg border border-bar-brown border-opacity-10 hover:border-opacity-30 transition-all duration-300">
+                                <i class="fas fa-users text-bar-gold text-3xl mb-4"></i>
+                                <div class="text-2xl font-bold text-bar-deep font-display">1000+</div>
+                                <div class="text-xs text-bar-gray mt-2">Clientes felices</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative scroll-animate animate-slideRight">
+                        <div class="p-10 bg-bar-off-white rounded-xl border border-bar-brown border-opacity-15 shadow-sm">
+                            <div class="mb-6">
+                                <i class="fas fa-quote-left text-bar-gold text-3xl opacity-60"></i>
+                            </div>
+                            <p class="text-bar-brown mb-8 italic font-light text-lg leading-relaxed">
+                                El café y las tostadas de Idilio despiertan los sentidos y alimentan el alma. Cada taza cuenta una historia de pasión y dedicación.
+                            </p>
+                            <div class="flex items-center pt-6 border-t border-bar-brown border-opacity-10">
+                                <div class="w-12 h-12 bg-bar-deep rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-coffee text-bar-gold"></i>
+                                </div>
+                                <div>
+                                    <div class="text-bar-deep font-semibold text-sm">Equipo Bar Idilio</div>
+                                    <div class="text-xs text-bar-gray">Desde 2011</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="py-24 bg-bar-off-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-20 scroll-animate">
+                    <h2 class="text-4xl md:text-5xl font-display font-bold text-bar-deep mb-6 animate-slideUp">Nuestro Menú</h2>
+                    <div class="w-16 h-0.5 bg-bar-gold mx-auto mb-8 animate-scaleIn"></div>
+                    <p class="text-bar-brown max-w-2xl mx-auto font-light text-base leading-relaxed animate-fadeIn">
+                        Descubrí nuestras especialidades, elaboradas con los mejores ingredientes y mucho amor
+                    </p>
+                </div>
+                <div id="menu-dinamico" class="scroll-animate">
+                    <div class="text-center text-bar-gray py-12">Cargando menú...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="galeria" class="py-24 bg-bar-cream">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-20 scroll-animate">
+                    <h2 class="text-4xl md:text-5xl font-display font-bold text-bar-deep mb-6 animate-slideUp">Galería</h2>
+                    <div class="w-16 h-0.5 bg-bar-gold mx-auto mb-8 animate-scaleIn"></div>
+                    <p class="text-bar-brown max-w-2xl mx-auto font-light text-base leading-relaxed animate-fadeIn">
+                        Descubre el ambiente acogedor y las delicias que te esperan en Bar Idilio
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 scroll-animate">
+                    <div class="aspect-square bg-bar-off-white rounded-lg overflow-hidden group cursor-pointer gallery-img border border-bar-brown border-opacity-10 hover:border-opacity-30 transition-all duration-300" data-img="imagenes/idilio cafe y tostadas.jpg">
+                        <img src="imagenes2/idilio_cafe_y_tostadas.png" alt="Café y Tostadas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400" loading="lazy">
+                    </div>
+                    <div class="aspect-square bg-bar-off-white rounded-lg overflow-hidden group cursor-pointer gallery-img border border-bar-brown border-opacity-10 hover:border-opacity-30 transition-all duration-300" data-img="imagenes/idilio cafe y tostadas2.jpg">
+                        <img src="imagenes2/idilio cafe y tostadas2.png" alt="Café y Tostadas 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400" loading="lazy">
+                    </div>
+                    <div class="aspect-square bg-bar-off-white rounded-lg overflow-hidden group cursor-pointer gallery-img border border-bar-brown border-opacity-10 hover:border-opacity-30 transition-all duration-300" data-img="imagenes/idilio cafe.jpg">
+                        <img src="imagenes2/idilio_cafe.png" alt="Café" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400" loading="lazy">
+                    </div>
+                    <div class="aspect-square bg-bar-off-white rounded-lg overflow-hidden group cursor-pointer gallery-img border border-bar-brown border-opacity-10 hover:border-opacity-30 transition-all duration-300" data-img="imagenes/idilio decoracion.jpg">
+                        <img src="imagenes2/idilio_decoracion.png" alt="Decoración" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400" loading="lazy">
+                    </div>
+                    <div class="aspect-square bg-bar-off-white rounded-lg overflow-hidden group cursor-pointer gallery-img border border-bar-brown border-opacity-10 hover:border-opacity-30 transition-all duration-300" data-img="imagenes/idilio desayuno.jpg">
+                        <img src="imagenes2/idilio_desayuno.png" alt="Desayuno" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400" loading="lazy">
+                    </div>
+                    <div class="aspect-square bg-bar-off-white rounded-lg overflow-hidden group cursor-pointer gallery-img border border-bar-brown border-opacity-10 hover:border-opacity-30 transition-all duration-300" data-img="imagenes/idilio interior.jpg">
+                        <img src="imagenes2/idilio_interior.png" alt="Interior del Bar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400" loading="lazy">
+                    </div>
+                    <div class="aspect-square bg-bar-off-white rounded-lg overflow-hidden group cursor-pointer gallery-img border border-bar-brown border-opacity-10 hover:border-opacity-30 transition-all duration-300" data-img="imagenes/idilio mesas.jpg">
+                        <img src="imagenes2/idilio_mesas.png" alt="Mesas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400" loading="lazy">
+                    </div>
+                    <div class="aspect-square bg-bar-off-white rounded-lg overflow-hidden group cursor-pointer gallery-img border border-bar-brown border-opacity-10 hover:border-opacity-30 transition-all duration-300" data-img="imagenes/idilio vista.jpg">
+                        <img src="imagenes2/frente_nuevo.png" alt="Vista del Bar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400" loading="lazy">
+                    </div>
+                    <div class="aspect-square bg-bar-off-white rounded-lg overflow-hidden group cursor-pointer gallery-img border border-bar-brown border-opacity-10 hover:border-opacity-30 transition-all duration-300" data-img="imagenes/idilio.jpg">
+                        <img src="imagenes2/idilio.png" alt="Bar Idilio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400" loading="lazy">
+                    </div>
+                    <div class="aspect-square bg-bar-off-white rounded-lg overflow-hidden group cursor-pointer gallery-img border border-bar-brown border-opacity-10 hover:border-opacity-30 transition-all duration-300" data-img="imagenes/perrito.JPG">
+                        <img src="imagenes/perrito.JPG" alt="Perrito" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400" loading="lazy">
+                    </div>
+                    <div class="aspect-square bg-bar-off-white rounded-lg overflow-hidden group cursor-pointer gallery-img border border-bar-brown border-opacity-10 hover:border-opacity-30 transition-all duration-300" data-img="imagenes/frente nuevo.jpg">
+                        <img src="imagenes/frente nuevo.jpg" alt="Frente Nuevo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400" loading="lazy">
+                    </div>
+                    <div class="aspect-square bg-bar-off-white rounded-lg overflow-hidden group cursor-pointer gallery-img border border-bar-brown border-opacity-10 hover:border-opacity-30 transition-all duration-300" data-img="imagenes/frente lateral.jpg">
+                        <img src="imagenes/frente lateral.jpg" alt="Frente Lateral" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400" loading="lazy">
+                    </div>
+                    <div class="aspect-square bg-bar-off-white rounded-lg overflow-hidden group cursor-pointer gallery-img border border-bar-brown border-opacity-10 hover:border-opacity-30 transition-all duration-300" data-img="imagenes/decoracion y cafe.jpg">
+                        <img src="imagenes/decoracion y cafe.jpg" alt="Decoración y Café" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400" loading="lazy">
+                    </div>
+                </div>
+                <!-- Modal para galería -->
+                <div id="gallery-modal-bg" class="hidden">
+                    <div id="gallery-modal-content">
+                        <button id="gallery-modal-close" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+                        <button id="gallery-modal-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                        <img id="gallery-modal-img" src="" alt="" />
+                        <button id="gallery-modal-next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contacto" class="py-24 bg-bar-off-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl md:text-5xl font-display font-bold text-bar-deep mb-6">Contacto</h2>
+                    <div class="w-16 h-0.5 bg-bar-gold mx-auto mb-8"></div>
+                    <p class="text-bar-brown max-w-2xl mx-auto font-light text-base">
+                        Visítanos y disfruta de la mejor experiencia cafetera de Rosario
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Contact Info -->
+                    <div class="bg-bar-cream rounded-xl border border-bar-brown border-opacity-10 p-10">
+                        <h3 class="text-2xl font-display font-bold text-bar-deep mb-8">Información de Contacto</h3>
+
+                        <div class="space-y-8">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-bar-deep rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt text-bar-gold text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-bar-deep mb-2">Ubicación</h4>
+                                    <p class="text-bar-brown text-sm">Jujuy 2097, Rosario.</p>
+                                    <a href="https://www.google.com/maps/place/Idilio/@-32.9358616,-60.649799,20z/data=!4m6!3m5!1s0x95b7ab3820aea52f:0xa2c32ac9d0e9abe5!8m2!3d-32.9359096!4d-60.6498104!16s%2Fg%2F1hhj3f3kn?entry=ttu" target="_blank"
+                                       class="text-bar-gold hover:text-bar-brown transition-colors text-sm mt-1 inline-flex items-center">
+                                        Ver en Google Maps <i class="fas fa-external-link-alt text-xs ml-2"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-bar-deep rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-clock text-bar-gold text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-bar-deep mb-2">Horarios</h4>
+                                    <div class="text-bar-brown text-sm space-y-1">
+                                        <p>Lunes a Viernes: 6:30 - 14:00</p>
+                                        <p>Sábados: 7:00 - 13:00</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-bar-deep rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-phone text-bar-gold text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-bar-deep mb-2">Teléfono</h4>
+                                    <p class="text-bar-brown text-sm"><a href="https://wa.me/3416213859" target="_blank" rel="noopener" class="text-bar-gold hover:text-bar-brown transition-colors">3416213859</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-10 pt-8 border-t border-bar-brown border-opacity-10">
+                            <h4 class="font-semibold text-bar-deep mb-4 text-sm">Síguenos</h4>
+                            <div class="flex space-x-3">
+                                <a href="https://web.facebook.com/profile.php?id=100088508236631" target="_blank" rel="noopener" class="w-10 h-10 bg-bar-deep rounded-full flex items-center justify-center text-bar-gold hover:bg-bar-brown transition-colors duration-300">
+                                    <i class="fab fa-facebook-f text-sm"></i>
+                                </a>
+                                <a href="https://wa.me/3416213859" target="_blank" rel="noopener" class="w-10 h-10 bg-bar-deep rounded-full flex items-center justify-center text-bar-gold hover:bg-bar-brown transition-colors duration-300">
+                                    <i class="fab fa-whatsapp text-sm"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map -->
+                    <div class="bg-bar-cream rounded-xl border border-bar-brown border-opacity-10 overflow-hidden">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3347.091858964019!2d-60.65199968481167!3d-32.9359095792096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b7ab3820aea52f%3A0xa2c32ac9d0e9abe5!2sIdilio!5e0!3m2!1ses!2sar!4v1717777777777!5m2!1ses!2sar"
+                            width="100%" 
+                            height="400" 
+                            style="border:0;"
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            class="w-full h-full min-h-96"
+                            title="Ubicación de Bar Idilio en Google Maps">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-bar-deep text-bar-cream py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12">
+                <!-- Logo and Description -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 bg-bar-gold rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-coffee text-bar-deep text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-display font-bold text-bar-cream">Bar Idilio</h3>
+                            <p class="text-xs text-bar-gray">Café Premium</p>
+                        </div>
+                    </div>
+                    <p class="text-bar-gray text-sm leading-relaxed">
+                        Desde 2011, ofrecemos la mejor experiencia cafetera de Rosario en un ambiente
+                        acogedor y único. Ven y descubre por qué somos el lugar favorito de los amantes del café.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-semibold text-bar-cream mb-5 text-sm">Enlaces Rápidos</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#inicio" class="text-bar-gray hover:text-bar-gold transition-colors text-sm">Inicio</a></li>
+                        <li><a href="#nosotros" class="text-bar-gray hover:text-bar-gold transition-colors text-sm">Nosotros</a></li>
+                        <li><a href="#menu" class="text-bar-gray hover:text-bar-gold transition-colors text-sm">Menú</a></li>
+                        <li><a href="#galeria" class="text-bar-gray hover:text-bar-gold transition-colors text-sm">Galería</a></li>
+                        <li><a href="#contacto" class="text-bar-gray hover:text-bar-gold transition-colors text-sm">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="font-semibold text-bar-cream mb-5 text-sm">Contacto</h4>
+                    <div class="space-y-4">
+                        <p class="text-bar-gray text-sm flex items-start">
+                            <i class="fas fa-map-marker-alt mr-3 text-bar-gold mt-1 text-xs"></i>
+                            <span>Jujuy 2097, Rosario</span>
+                        </p>
+                        <div class="flex space-x-3">
+                            <a href="https://web.facebook.com/profile.php?id=100088508236631" target="_blank" rel="noopener" class="w-9 h-9 bg-bar-brown rounded-full flex items-center justify-center hover:bg-bar-gold hover:text-bar-deep transition-colors duration-300 text-bar-gold">
+                                <i class="fab fa-facebook-f text-xs"></i>
+                            </a>
+                            <a href="https://wa.me/3416213859" target="_blank" rel="noopener" class="w-9 h-9 bg-bar-brown rounded-full flex items-center justify-center hover:bg-bar-gold hover:text-bar-deep transition-colors duration-300 text-bar-gold">
+                                <i class="fab fa-whatsapp text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-bar-brown border-opacity-20 mt-12 pt-8 text-center text-bar-gray text-xs">
+                <p>
+                    Desarrollado por <a href="https://www.cristianfontanini.com" target="_blank" rel="noopener" class="text-bar-gold hover:underline">Cristian Fontanini</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="menu-dinamico.js"></script>
+    <!-- <script src="debug-menu.js"></script> -->
+</body>
+</html>
