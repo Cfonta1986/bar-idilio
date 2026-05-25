@@ -8,6 +8,16 @@
     --bar-cream: #F9F7F3;
     --bar-off-white: #FEFDFB;
     --bar-gray: #8B8680;
+    --bar-terracotta: #C85A54;
+    --bar-terracotta-light: #E8B4AB;
+    --bar-copper: #A0522D;
+    --bar-bronze: #8B6F47;
+    --bar-olive: #6B7D5C;
+    --bar-sage: #8BA894;
+    --bar-sage-light: #D4E5DC;
+    --bar-rust: #8B4513;
+    --bar-warm-sand: #E5D4C1;
+    --bar-clay: #A67C52;
     --transition-smooth: 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -63,11 +73,12 @@ p {
     position: fixed;
     top: 0;
     left: 0;
-    height: 2px;
+    height: 3px;
     width: 0;
-    background: linear-gradient(90deg, var(--bar-gold), var(--bar-brown));
+    background: linear-gradient(90deg, var(--bar-terracotta), var(--bar-gold), var(--bar-bronze));
     z-index: 9999;
     transition: width 0.2s ease-out;
+    box-shadow: 0 0 8px rgba(200, 90, 84, 0.4);
 }
 
 /* HEADER */
@@ -118,7 +129,7 @@ nav a.text-bar-gold::after {
 
 /* HERO SECTION */
 section#inicio {
-    background: linear-gradient(135deg, var(--bar-off-white) 0%, var(--bar-cream) 100%);
+    background: linear-gradient(135deg, var(--bar-off-white) 0%, var(--bar-cream) 50%, rgba(232, 180, 171, 0.15) 100%);
     min-height: 85vh;
     display: flex;
     align-items: center;
@@ -584,6 +595,22 @@ footer a:hover {
     color: var(--bar-gray);
 }
 
+.text-bar-terracotta {
+    color: var(--bar-terracotta);
+}
+
+.text-bar-olive {
+    color: var(--bar-olive);
+}
+
+.text-bar-sage {
+    color: var(--bar-sage);
+}
+
+.text-bar-bronze {
+    color: var(--bar-bronze);
+}
+
 /* BACKGROUND COLORS */
 .bg-bar-deep {
     background-color: var(--bar-deep);
@@ -599,6 +626,30 @@ footer a:hover {
 
 .bg-bar-off-white {
     background-color: var(--bar-off-white);
+}
+
+.bg-bar-terracotta {
+    background-color: var(--bar-terracotta);
+}
+
+.bg-bar-terracotta-light {
+    background-color: var(--bar-terracotta-light);
+}
+
+.bg-bar-sage-light {
+    background-color: var(--bar-sage-light);
+}
+
+.bg-bar-warm-sand {
+    background-color: var(--bar-warm-sand);
+}
+
+.bg-bar-olive {
+    background-color: var(--bar-olive);
+}
+
+.bg-bar-sage {
+    background-color: var(--bar-sage);
 }
 
 /* BORDER UTILITIES */
